@@ -6,7 +6,10 @@ from datetime import datetime
 
 # Google Sheets Authentication
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("restaurento-1127906dfe27.json", scope)
+
+# Get credentials from Streamlit secrets
+creds_dict = dict(st.secrets["gcp_service_account"])
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 
 # Open Google Sheet
