@@ -280,9 +280,6 @@ menu = {
 st.title("🍽️ CookDoor Menu")
 st.write("Select items and place your order!")
 
-# User Details (Only name now)
-name = st.text_input("Enter your name:")
-
 # Order Form with Collapsible Categories
 selected_items = {}
 
@@ -298,7 +295,9 @@ for category, items in menu.items():
             )
             if quantity > 0:
                 selected_items[item] = quantity
-
+                
+# User Details (Only name now)
+name = st.text_input("Enter your name:")
 # Place Order Button
 if st.button("✅ Place Order"):
     if not name:
