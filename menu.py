@@ -320,13 +320,3 @@ if st.button("✅ Place Order"):
     else:
         st.warning("⚠️ Please select at least one item to order.")
 
-# Display Past Orders
-if st.checkbox("📜 View Previous Orders"):
-    st.subheader("Order History")
-    orders = db.get_all_values()
-    if len(orders) > 1:
-        # Updated columns without contact
-        df = pd.DataFrame(orders[1:], columns=["Name", "Time", "Items", "Total Price"])
-        st.dataframe(df)
-    else:
-        st.write("No past orders found.")
